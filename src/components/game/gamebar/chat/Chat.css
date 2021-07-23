@@ -1,0 +1,19 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.messages {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-break: break-all;
+}
+
+.chat .message {
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5em;
+  padding: 0.3em 0.5em;
+}
