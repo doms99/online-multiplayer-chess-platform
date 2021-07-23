@@ -1,0 +1,55 @@
+//// -- LEVEL 1
+//// -- Tables and References
+
+// Creating tables
+Table users as U {
+  username varchar [pk]
+  first_name varchar
+  last_name varchar
+  score int
+  email varchar [unique]
+  joined date
+  password varchar
+}
+
+Table tokens as T {
+  created timestamp [pk]
+  username varchar [pk]
+  token varchar
+ }
+ 
+Ref: T.username - U.username
+
+Table status as S {
+  id serial [pk]
+  status varchar
+}
+
+Table games as G {
+  id varchar [pk]
+  start timestamp
+  status int
+  duration int
+  winner varchar
+}
+
+Ref: G.winner > U.username
+Ref: G.status > S.id
+
+Table moves as M {
+  id serial [pk]
+  game_id varchar
+  time timestamp
+  move json
+}
+
+Ref: M.game_id > G.id
+
+Table players as P {
+  game_id varchar [pk]
+  username varchar [pk]
+  color varchar
+}
+
+Ref: P.game_id > G.id
+Ref: P.username > U.username
